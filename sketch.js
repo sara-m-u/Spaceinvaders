@@ -12,12 +12,12 @@ let level = 1;
 let myStorage = window.localStorage;
 
 function getHighscore() {
-  return myStorage.getItem("highscore");
+  return myStorage.getItem("Highscore");
 }
 
 function setHighscore() {
   if (getHighscore() == null || parseInt(getHighscore()) < score) {
-    myStorage.setItem("highscore", "" + score);
+    myStorage.setItem("Highscore", "" + score);
   }
 }
 
@@ -29,7 +29,8 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(400, 400);
+  let canvas=createCanvas(400, 400);
+  canvas.parent("gamearea");
   spiller = new Spiller(200, 360);
   setupAliens();
 }
@@ -142,9 +143,9 @@ function draw() {
 
     fill(255);
     textSize(15);
-    text("Poengsum: " + score, 20, 20);
-    text("Nivå: " + level, 20, 50);
-    text("highscore: " + getHighscore(), 20, 80);
+    text("Score: " + score, 20, 20);
+    text("Level: " + level, 20, 50);
+    text("Highscore: " + getHighscore(), 20, 80);
     setHighscore();
 
     if (aliens.length == 0) {
